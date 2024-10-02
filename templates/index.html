@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Predict Salary</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender (0: Male, 1: Female):</label>
+                <input type="number" name="gender" required>
+            </div>
+            <div class="form-group">
+                <label for="education">Education Level (Encoded):</label>
+                <input type="number" name="education" required>
+            </div>
+            <div class="form-group">
+                <label for="job_title">Job Title (Encoded):</label>
+                <input type="number" name="job_title" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" name="experience" required>
+            </div>
+            <button type="submit" class="submit-btn">Predict</button>
+        </form>
+        <div class="result">
+            {% if prediction_text %}
+                <h2>{{ prediction_text }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
